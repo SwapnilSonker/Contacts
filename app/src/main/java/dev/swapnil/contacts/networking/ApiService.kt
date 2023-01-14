@@ -1,10 +1,10 @@
 package dev.swapnil.contacts.networking
 
-import contactNameItem
+import dev.swapnil.contacts.data.Contact
 import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("contacts_get")
-    suspend fun getData(): List<contactNameItem>
+    @GET("contacts_Get")
+    suspend fun getContacts(): List<Contact>
 }

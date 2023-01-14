@@ -1,8 +1,11 @@
-package dev.swapnil.contacts
+package dev.swapnil.contacts.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
+import dev.swapnil.contacts.R
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
