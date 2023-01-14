@@ -41,7 +41,9 @@ class ContactDetailFragment : Fragment() {
 
         binding.buttonSendMessage.setOnClickListener {
             // Move to next screen
-            findNavController().navigate(R.id.action_contactDetailFragment_to_messageScreenFragment)
+            findNavController().navigate(
+                ContactDetailFragmentDirections.actionContactDetailFragmentToMessageScreenFragment(viewModel.selectedContact!!.phone)
+            )
         }
     }
 }

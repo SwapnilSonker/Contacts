@@ -22,6 +22,15 @@
     </fragment>
     <fragment
         android:id="@+id/messageScreenFragment"
-        android:name="dev.swapnil.contacts.ui.messagescreen.MessageScreenFragment"
-        android:label="MessageScreenFragment" />
+        android:name="dev.swapnil.contacts.ui.messagescreen.MessageFragment"
+        android:label="MessageScreenFragment" >
+        <action
+            android:id="@+id/action_messageScreenFragment_to_contactListFragment"
+            app:destination="@id/contactListFragment"
+            app:popUpTo="@id/contactListFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
 </navigation>
