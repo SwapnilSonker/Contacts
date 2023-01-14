@@ -1,0 +1,1 @@
+class contactName : ArrayList<contactNameItem>()
