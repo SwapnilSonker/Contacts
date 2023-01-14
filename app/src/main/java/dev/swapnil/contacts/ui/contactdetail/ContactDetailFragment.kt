@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import dev.swapnil.contacts.R
 import dev.swapnil.contacts.databinding.FragmentContactDetailBinding
 import dev.swapnil.contacts.ui.contactlist.ContactsViewModel
 
@@ -39,6 +41,7 @@ class ContactDetailFragment : Fragment() {
 
         binding.buttonSendMessage.setOnClickListener {
             // Move to next screen
+            findNavController().navigate(R.id.action_contactDetailFragment_to_messageScreenFragment)
         }
     }
 }

@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/contactDetailFragment"
         android:name="dev.swapnil.contacts.ui.contactdetail.ContactDetailFragment"
-        android:label="ContactDetailFragment" />
+        android:label="ContactDetailFragment" >
+        <action
+            android:id="@+id/action_contactDetailFragment_to_messageScreenFragment"
+            app:destination="@id/messageScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messageScreenFragment"
+        android:name="dev.swapnil.contacts.ui.messagescreen.MessageScreenFragment"
+        android:label="MessageScreenFragment" />
 </navigation>
