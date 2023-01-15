@@ -1,12 +1,17 @@
 package dev.swapnil.contacts.di
 
+import android.content.Context
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import androidx.viewbinding.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.swapnil.contacts.db.MessageDatabase
 import dev.swapnil.contacts.networking.ApiService
 import javax.inject.Singleton
 import okhttp3.OkHttpClient
@@ -45,4 +50,17 @@ object AppModule {
     @Singleton
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideDb(@ApplicationContext context: Context) = Room
+        .databaseBuilder(
+            context,
+            MessageDatabase::class.java,
+            "message_db"
+        ).build()
+
+    @Singleton
+    @Provides
+    fun provideDao(db: MessageDatabase) = db.messageDao()
 }

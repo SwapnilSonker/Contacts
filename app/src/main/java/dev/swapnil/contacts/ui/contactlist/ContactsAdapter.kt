@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.swapnil.contacts.data.Contact
+import dev.swapnil.contacts.data.fullName
 import dev.swapnil.contacts.databinding.ItemContactsListBinding
 
 class ContactsAdapter(
@@ -32,7 +33,7 @@ class ContactsAdapter(
     ) {
         val contact = contacts[position]
         with (holder.binding) {
-            textViewContact.text = "${contact.name} ${contact.lastname}"
+            textViewContact.text = contact.fullName
             root.setOnClickListener {
                 onClick(contact)
             }

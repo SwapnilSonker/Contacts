@@ -12,14 +12,14 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_margin="8dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBarMessages"
-        style="?android:attr/progressBarStyle"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Hi! Please send a message to see it here."
+        android:id="@+id/textView_empty"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

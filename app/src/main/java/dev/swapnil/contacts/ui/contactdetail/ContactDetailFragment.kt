@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.swapnil.contacts.R
+import dev.swapnil.contacts.data.fullName
 import dev.swapnil.contacts.databinding.FragmentContactDetailBinding
 import dev.swapnil.contacts.ui.contactlist.ContactsViewModel
 
@@ -36,13 +37,17 @@ class ContactDetailFragment : Fragment() {
             savedInstanceState
         )
 
-        binding.textViewContact.text = "${viewModel.selectedContact?.name} ${viewModel.selectedContact?.lastname}"
+        binding.textViewContact.text = viewModel.selectedContact?.fullName
         binding.textViewPhone.text = viewModel.selectedContact?.phone
 
         binding.buttonSendMessage.setOnClickListener {
             // Move to next screen
             findNavController().navigate(
-                ContactDetailFragmentDirections.actionContactDetailFragmentToMessageScreenFragment(viewModel.selectedContact!!.phone)
+                ContactDetailFragmentDirections.
+                actionContactDetailFragmentToMessageScreenFragment(
+                    viewModel.selectedContact!!.phone,
+                    viewModel.selectedContact!!.fullName
+                )
             )
         }
     }

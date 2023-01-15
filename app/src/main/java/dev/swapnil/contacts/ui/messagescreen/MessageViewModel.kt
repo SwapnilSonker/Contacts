@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.swapnil.contacts.data.*
+import dev.swapnil.contacts.db.MessageDao
+import dev.swapnil.contacts.db.MessageEntity
 import dev.swapnil.contacts.networking.ApiService
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -12,7 +14,8 @@ import retrofit2.HttpException
 
 @HiltViewModel
 class MessageViewModel @Inject constructor(
-    private val api: ApiService
+    private val api: ApiService,
+    private val db: MessageDao
 ): ViewModel() {
 
     val showProgressBar = MutableLiveData(false)
@@ -21,7 +24,7 @@ class MessageViewModel @Inject constructor(
 
 
 
-    fun sendMessage(otp: String, phone: String) {
+    fun sendMessage(otp: String, phone: String, name: String) {
         showProgressBar.value = true
         buttonSendMessageEnabled.value = false
         val message = VonageSmsRequest(
@@ -37,6 +40,14 @@ class MessageViewModel @Inject constructor(
                 )
                 if (result.messages[0].status == "0") {
                     showMessage.value = "SMS sent successfully"
+                    db.addMessage(
+                        MessageEntity(
+                            id = 0,
+                            message = "Hi, Your OTP is: $otp",
+                            to = name,
+                            timestamp = System.currentTimeMillis()
+                        )
+                    )
                 } else {
                     showMessage.value = "SMS sending failed"
                     buttonSendMessageEnabled.value = true

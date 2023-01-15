@@ -32,5 +32,18 @@
         <argument
             android:name="phone"
             app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/messagesListFragment"
+        android:name="dev.swapnil.contacts.ui.messagesList.MessagesListFragment"
+        android:label="MessagesListFragment" />
+    <action android:id="@+id/action_global_messagesListFragment" app:destination="@id/messagesListFragment" />
+    <action
+        android:id="@+id/action_global_contactListFragment"
+        app:destination="@id/contactListFragment"
+        app:popUpTo="@id/contactListFragment"
+        app:popUpToInclusive="true" />
 </navigation>
