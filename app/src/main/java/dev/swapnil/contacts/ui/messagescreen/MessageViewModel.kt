@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.swapnil.contacts.data.VonageSmsRequest
+import dev.swapnil.contacts.data.*
 import dev.swapnil.contacts.networking.ApiService
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -18,6 +18,8 @@ class MessageViewModel @Inject constructor(
     val showProgressBar = MutableLiveData(false)
     val showMessage = MutableLiveData("")
     val buttonSendMessageEnabled = MutableLiveData(true)
+
+
 
     fun sendMessage(otp: String, phone: String) {
         showProgressBar.value = true
